@@ -1,0 +1,103 @@
+/* Custom styles */
+/*
+DePaul IHS
+*/
+
+@font-face {
+    font-family: 'GibsonSemiBold';
+    src: url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.eot');
+    src: url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.woff') format('woff'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.ttf') format('truetype'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.svg#GibsonSemiBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GibsonBold';
+    src: url('http://www.housingstudies.org/static/css/fonts/gibson-bold-webfont.eot');
+    src: url('http://www.housingstudies.org/static/css/fonts/gibson-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-bold-webfont.woff') format('woff'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-bold-webfont.ttf') format('truetype'),
+         url('http://www.housingstudies.org/static/css/fonts/gibson-bold-webfont.svg#GibsonBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ColaborateThinRegular';
+    src: url('http://www.housingstudies.org/static/css/fonts/ColabThi-webfont.eot');
+    src: url('http://www.housingstudies.org/static/css/fonts/ColabThi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabThi-webfont.woff') format('woff'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabThi-webfont.ttf') format('truetype'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabThi-webfont.svg#ColaborateThinRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ColaborateRegRegular';
+    src: url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.eot');
+    src: url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.woff') format('woff'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.ttf') format('truetype'),
+         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.svg#ColaborateRegRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'AlegreyaBold';
+    src: url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.eot');
+    src: url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.woff') format('woff'),
+         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.ttf') format('truetype'),
+         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.svg#AlegreyaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+    
+body { 
+  font: 16px/1.3em 'ColaborateThinRegular', sans-serif;
+  margin:0; 
+  padding:0;
+}
+    
+#topNav {
+  position: absolute;
+  top: 0;
+  height: 72px;
+  padding: 5px 5px;
+  /*background: #eae9e5 url('/images/bg.png') 0 0 repeat-x;*/
+  width: 100%;
+  box-sizing: border-box;
+}
+    
+#topNav h2 {
+  font: 22px/1em 'GibsonBold', serif;
+  color: #615c5c;
+  text-transform: uppercase;
+  position: absolute;
+  top: 26px;
+  width: 100%;
+  text-align: center;
+} 
+    
+#map { 
+  position:absolute; 
+  top:72px; 
+  bottom:0; 
+  width:100%; 
+  z-index: 1;
+}
+
+.map-tooltip {
+  border-radius: 0;
+  border: none;
+  font-family: proxima-nova, "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+ 
+ @media only screen and (max-width: 840px) {
+ #topNav h3 {
+  opacity: 0;
+ }
+}

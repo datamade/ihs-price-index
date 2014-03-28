@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>DePaul Institute for Housing Studies | Building Age Composition</title>
+
+  <meta name="author" content="DePaul Institute for Housing Studies" />
+  <meta name="description" content="In-depth stories about Brooklyn — all of Brooklyn." />
+  <meta name="robots" content="index, follow" />
+
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  
+  <!-- Web app-able -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  
+  <!-- 1140px Grid styles for IE -->
+  <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+
+  <!-- The 1140px Grid - http://cssgrid.net/ -->
+  <link rel="stylesheet" href="/css/cssgrid.css" type="text/css" media="screen" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/custom.css" type="text/css" media="screen" />
+  
+  <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
+  <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  
+  <!-- MAPBOX  -->
+    <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+    <!--[if lte IE 8]>
+      <link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="topNav">
+  <h2>Cook County Building Age Composition</h2>
+  <a href="http://www.housingstudies.org/"><img src='/images/ihs-logo.png' alt='DePaul Institute for Housing Studies' /></a>
+</div>
+<div id='map'></div>
+
+</div>
+
+<script>
+  var map = L.mapbox.map('map', 'housingstudies.hace6l6h', {minZoom: 10, maxZoom: 16}).setView([41.86943299643522, -87.72926330566406], 12);
+</script>
+</body>
+</html>
