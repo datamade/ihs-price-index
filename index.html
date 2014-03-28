@@ -31,10 +31,10 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   
   <!-- MAPBOX  -->
-    <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
-    <link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
     <!--[if lte IE 8]>
-      <link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+      <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.ie.css' rel='stylesheet' >
     <![endif]-->
 </head>
 
@@ -49,7 +49,58 @@
 </div>
 
 <script>
-  var map = L.mapbox.map('map', 'housingstudies.hace6l6h', {minZoom: 10, maxZoom: 16}).setView([41.86943299643522, -87.72926330566406], 12);
+  
+  var tooltip_template = '<h3>{{{HousingC_1}}}</h3>\
+    <table >\
+      <tbody>\
+        <tr>\
+          <td>Single-Family</td>\
+          <td>{{{HousingC_3}}}</td>\
+        </tr>\
+        <tr>\
+          <td>Condominium</td>\
+          <td>{{{HousingC_4}}}</td>\
+        </tr>\
+        <tr>\
+          <td>2 to 4 Unit Bldg</td>\
+          <td>{{{HousingC_5}}}</td>\
+        </tr>\
+        <tr>\
+          <td>5+ Unit Bldg</td>\
+          <td>{{{HousingC_6}}}</td>\
+        </tr>\
+      </tbody>\
+    </table>\
+  ';
+
+  var legend_template = "<div id='my-legend'>\
+    <h4>Housing Composition</h4>\
+    <div class='legend-scale'>\
+      <ul class='legend-labels'>\
+        <li><span style='background:#F0BBBB;'></span>Single-Family</li>\
+        <li><span style='background:#B81F1F;'></span>Condominium</li>\
+        <li><span style='background:#84B1F0;'></span>2 to 4 Unit Building</li>\
+        <li><span style='background:#206CD4;'></span>5 to 49 Unit Building</li>\
+        <li><span style='background:#041D40;'></span>50 + Unit Building</li>\
+      </ul>\
+    </div>\
+    <div class='legend-source'>Source: <a href='http://www.housingstudies.org/dataportal/composition/housing-units-composition/county/2012/2012/''>Cook County Assessor</a></div>\
+    </div>";
+
+
+  var map = L.mapbox.map('map', '', {minZoom: 10, maxZoom:16} ).setView([41.86943299643522, -87.72926330566406], 12);
+  var gridLayer = L.mapbox.gridLayer('housingstudies.hace6l6h');
+  map.addLayer(L.mapbox.tileLayer('housingstudies.hace6l6h'));
+  map.addLayer(gridLayer);
+  
+  var tooltip = L.mapbox.gridControl(gridLayer);
+  tooltip.setTemplate(tooltip_template);
+  map.addControl(tooltip);
+
+  var legend = L.mapbox.legendControl();
+  legend.addLegend(legend_template);
+  map.addControl(legend);
+
 </script>
 </body>
 </html>
