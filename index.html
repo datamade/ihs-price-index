@@ -109,7 +109,7 @@
   $.when($.getJSON('data/community-areas.geojson')).then(
     function(communities){
       commAreas = L.geoJson(communities, {
-        style: {opacity: 0, fillOpacity: 0},
+        style: {opacity: 0, color: "#EDAB50", fillOpacity: 0},
         onEachFeature: function(feature, layer){
           layer.on('mouseover', function(e){
             layer.setStyle({opacity: 0.7})
