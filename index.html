@@ -94,16 +94,7 @@
 
   var map = L.mapbox.map('map', '', {minZoom: 10, maxZoom:16} ).setView([41.86943299643522, -87.72926330566406], 12);
   var gridLayer = L.mapbox.gridLayer('housingstudies.hace6l6h');
-  var commAreas = new L.LayerGroup();
   map.addLayer(L.mapbox.tileLayer('housingstudies.hace6l6h'));
-  gridLayer.on('mouseover', function(e){
-    commAreas.clearLayers();
-    var area = slugify(e.data['HousingC_1']);
-    $.getJSON(area, function(data){
-        commAreas.addLayer(L.geoJSON(data));
-        map.addLayer(commAreas);
-    })
-  })
   map.addLayer(gridLayer);
 
   var tooltip = L.mapbox.gridControl(gridLayer);
@@ -114,12 +105,23 @@
   legend.addLegend(legend_template);
   map.addControl(legend);
 
-  function slugify(text){
-      return text
-          .toLowerCase()
-          .replace(/[^\w ]+/g,'')
-          .replace(/ +/g, '-');
-  }
+  var commAreas;
+  $.when($.getJSON('data/community-areas.geojson')).then(
+    function(communities){
+      commAreas = L.geoJson(communities, {
+        style: {opacity: 0, fillOpacity: 0},
+        onEachFeature: function(feature, layer){
+          layer.on('mouseover', function(e){
+            layer.setStyle({opacity: 0.7})
+          });
+          layer.on('mouseout', function(e){
+            layer.setStyle({opacity: 0})
+          })
+        }
+      })
+      commAreas.addTo(map);
+    }
+  )
 
 </script>
 </body>
