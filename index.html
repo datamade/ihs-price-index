@@ -10,11 +10,11 @@
   <meta name="robots" content="index, follow" />
 
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-  
+
   <!-- Web app-able -->
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-  
+
   <!-- 1140px Grid styles for IE -->
   <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
 
@@ -23,13 +23,13 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/custom.css" type="text/css" media="screen" />
-  
+
   <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
   <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
 
   <!-- jQuery -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  
+
   <!-- MAPBOX  -->
     <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
@@ -49,7 +49,7 @@
 </div>
 
 <script>
-  
+
   var tooltip_template = '<h3>{{{HousingC_1}}}</h3>\
     <table >\
       <tbody>\
@@ -96,7 +96,7 @@
   var gridLayer = L.mapbox.gridLayer('housingstudies.hace6l6h');
   map.addLayer(L.mapbox.tileLayer('housingstudies.hace6l6h'));
   map.addLayer(gridLayer);
-  
+
   var tooltip = L.mapbox.gridControl(gridLayer);
   tooltip.setTemplate(tooltip_template);
   map.addControl(tooltip);
@@ -104,6 +104,24 @@
   var legend = L.mapbox.legendControl();
   legend.addLegend(legend_template);
   map.addControl(legend);
+
+  var commAreas;
+  $.when($.getJSON('data/community-areas.geojson')).then(
+    function(communities){
+      commAreas = L.geoJson(communities, {
+        style: {opacity: 0, color: "#EDAB50", fillOpacity: 0},
+        onEachFeature: function(feature, layer){
+          layer.on('mouseover', function(e){
+            layer.setStyle({opacity: 0.7})
+          });
+          layer.on('mouseout', function(e){
+            layer.setStyle({opacity: 0})
+          })
+        }
+      })
+      commAreas.addTo(map);
+    }
+  )
 
 </script>
 </body>
