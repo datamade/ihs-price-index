@@ -91,15 +91,18 @@
     </div>\
   ";
 
+  var mapbox_id = 'housingstudies.hace6l6h';
+
   var map = L.mapbox.map('map', '', {minZoom: 10, maxZoom:16} ).setView([41.86943299643522, -87.72926330566406], 12);
-  var gridLayer = L.mapbox.gridLayer('housingstudies.hace6l6h');
-  map.addLayer(L.mapbox.tileLayer('housingstudies.hace6l6h'));
+  var gridLayer = L.mapbox.gridLayer(mapbox_id);
+  map.addLayer(L.mapbox.tileLayer(mapbox_id));
   map.addLayer(gridLayer);
 
   var tooltip = L.mapbox.gridControl(gridLayer, {position: 'bottomright'});
   tooltip.setTemplate(tooltip_template);
   map.addControl(tooltip);
 
+  // https://a.tiles.mapbox.com/v3/{mapbox_id}/markers.geojson
   var commAreas;
   $.when($.getJSON('data/cook-community-areas.geojson')).then(
     function(communities){
