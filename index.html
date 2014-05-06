@@ -106,7 +106,7 @@
   map.addControl(legend);
 
   var commAreas;
-  $.when($.getJSON('data/community-areas.geojson')).then(
+  $.when($.getJSON('data/cook-community-areas.geojson')).then(
     function(communities){
       commAreas = L.geoJson(communities, {
         style: {opacity: 0, color: "#EDAB50", fillOpacity: 0},
