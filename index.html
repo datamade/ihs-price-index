@@ -52,6 +52,14 @@
 
 <script>
 
+  // logic for iframe view
+  var is_iframe = false;
+  if (window.location.href.indexOf("iframe=1") >= 0) {
+    is_iframe = true;
+    $("#topNav").hide();
+    $("#map").css("top", "0");
+  }
+
   var tooltip_template = "<h3>{{{ca_name}}}</h3>\
     <table class='tooltip'>\
       <thead>\
