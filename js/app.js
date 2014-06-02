@@ -43,7 +43,7 @@ var tooltip_template = "<h3>{{{ca_name}}}</h3>\
       </tr>\
     </tbody>\
   </table>\
-  <div class='legend-source'>Source: <a href='http://www.housingstudies.org/dataportal/info/composition/'>IHS calculations from the Cook County Assessor</a></div>\
+  <div class='legend-source'>Source: <a href='http://www.housingstudies.org/dataportal/info/composition/' target='_blank'>IHS calculations from the Cook County Assessor</a></div>\
   </div>\
 ";
 
