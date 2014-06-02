@@ -19,27 +19,27 @@ var tooltip_template = "<h3>{{{ca_name}}}</h3>\
       <tr>\
         <td class='legend-box'><span style='background:#F5D4A3;'></span> Single-Family</td>\
         <td>42.4%</td>\
-        <td>{{{Share13_1P}}}%</td>\
+        <td>{{{share_131}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#EDAB50;'></span> Condominium</td>\
         <td>18.6%</td>\
-        <td>{{{Share13_2P}}}%</td>\
+        <td>{{{share_132}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#8DA7CE;'></span> 2-4 Unit Bldg</td>\
         <td>18.0%</td>\
-        <td>{{{Share13_3P}}}%</td>\
+        <td>{{{share_133}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#375481;'></span> 5-49 Unit Bldg</td>\
-        <td>21.0%</td>\
-        <td>{{{Share13_4P}}}%</td>\
+        <td>15.6%</td>\
+        <td>{{{share_1341}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#1F2F47;'></span> 50+ Unit Bldg</td>\
-        <td>N.N%</td>\
-        <td>{{{Share13_5P}}}%</td>\
+        <td>5.4%</td>\
+        <td>{{{share_1342}}}%</td>\
       </tr>\
     </tbody>\
   </table>\
