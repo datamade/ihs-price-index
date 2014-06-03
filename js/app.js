@@ -6,39 +6,39 @@ if (window.location.href.indexOf("iframe=1") >= 0) {
   $("#map").css("top", "0");
 }
 
-var tooltip_template = "<h3>{{{ca_name}}}</h3>\
+var tooltip_template = "<h3>{{{CCA_Census}}}</h3>\
   <table class='tooltip'>\
     <thead>\
       <tr>\
         <th>Housing Composition</th>\
-        <th>Cook County</th>\
+        <th>{{{REF_GEOG}}}</th>\
         <th>Highlighted Area</th>\
       </tr>\
     </thead>\
     <tbody>\
       <tr>\
         <td class='legend-box'><span style='background:#F5D4A3;'></span> Single-Family</td>\
-        <td>42.4%</td>\
+        <td>{{{Rshre_131}}}%</td>\
         <td>{{{share_131}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#EDAB50;'></span> Condominium</td>\
-        <td>18.6%</td>\
+        <td>{{{Rshre_132}}}%</td>\
         <td>{{{share_132}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#8DA7CE;'></span> 2-4 Unit Bldg</td>\
-        <td>18.0%</td>\
+        <td>{{{Rshre_133}}}%</td>\
         <td>{{{share_133}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#375481;'></span> 5-49 Unit Bldg</td>\
-        <td>15.6%</td>\
+        <td>{{{Rshre_1341}}}%</td>\
         <td>{{{share_1341}}}%</td>\
       </tr>\
       <tr>\
         <td class='legend-box'><span style='background:#1F2F47;'></span> 50+ Unit Bldg</td>\
-        <td>5.4%</td>\
+        <td>{{{Rshre_1342}}}%</td>\
         <td>{{{share_1342}}}%</td>\
       </tr>\
     </tbody>\
