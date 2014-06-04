@@ -61,7 +61,7 @@ var legend_template = "<div id='my-legend'>\
 
 var mapbox_id = 'housingstudies.hace6l6h';
 
-var map = L.mapbox.map('map', '', {minZoom: 10, maxZoom:16} ).setView([41.86943299643522, -87.72926330566406], 11);
+var map = L.mapbox.map('map', '', {minZoom: 10, maxZoom:16, doubleClickZoom: false} ).setView([41.86943299643522, -87.72926330566406], 11);
 var hash = new L.Hash(map); //keep track of map location
 var gridLayer = L.mapbox.gridLayer(mapbox_id);
 map.addLayer(L.mapbox.tileLayer(mapbox_id));
@@ -73,7 +73,7 @@ if (is_iframe) {
   map.addControl(legend);
 }
 else {
-  var tooltip = L.mapbox.gridControl(gridLayer, {position: 'bottomright'});
+  var tooltip = L.mapbox.gridControl(gridLayer, {position: 'bottomright', pinnable: false});
   tooltip.setTemplate(tooltip_template);
   map.addControl(tooltip);
 }
