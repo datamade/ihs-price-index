@@ -43,6 +43,7 @@ var tooltip_template = "<h3>{{{CCA_Census}}}</h3>\
       </tr>\
     </tbody>\
   </table>\
+  <div class='legend-source'><a href='http://www.housingstudies.org/research-publications/publications/composition-cook-countys-housing-market/' target='_blank'>Read the report &raquo;</a><br /></div>\
   <div class='legend-source'>Source: <a href='http://www.housingstudies.org/dataportal/info/composition/' target='_blank'>IHS calculations from the Cook County Assessor</a></div>\
   </div>\
 ";
