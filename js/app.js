@@ -1,3 +1,13 @@
+var map;
+
+$(window).resize(function () {
+  var h = $(window).height(),
+    offsetTop = 80; // Calculate the top offset
+
+  $('#chart').css('height', (h - offsetTop - 200));
+  $('#map').css('height', (h - offsetTop));
+}).resize();
+
 $(function () {
 
     // logic for iframe view
@@ -66,13 +76,32 @@ function init_chart(){
 
 function init_map() {
 
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    map = L.map('map').setView([41.87467,-87.62627], 9);
 
-    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        id: 'datamade.hn83a654'
     }).addTo(map);
+
+    $.when($.getJSON('data/pumas.geojson')).then(
+      function(pumas){
+        L.geoJson(pumas, {
+            style: puma_style,
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.NAMELSAD10);
+            }
+        }).addTo(map);
+    });
+}
+
+function puma_style(feature){
+    var style = {
+        "color": "white",
+        "fillColor": "#0570b0",
+        "opacity": 1,
+        "weight": 1,
+        "fillOpacity": 0.5,
+    }
+    return style;
 }
