@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>DePaul Institute for Housing Studies | The Composition of Cook County’s Housing Market</title>
+    <title>DePaul Institute for Housing Studies | Cook County Housing Price Index</title>
 
     <meta name="author" content="DePaul Institute for Housing Studies" />
     <meta name="description" content="In-depth stories about Brooklyn — all of Brooklyn." />
@@ -22,25 +22,21 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/custom.css" type="text/css" media="screen" />
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
-    <!--[if lte IE 8]>
-      <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.ie.css' rel='stylesheet' >
-    <![endif]-->
   </head>
 
   <body>
     <div id="topNav">
       <a id='logo' href="http://www.housingstudies.org/"><img src='/images/ihs-logo.png' alt='DePaul Institute for Housing Studies' /></a>
-      <h2>The Composition of Cook County’s Housing Market</h2>
+      <h2>Cook County Housing Price Index</h2>
 
     </div>
-    <div id='map'></div>
+    <div id='chart'></div>
 
     <!-- Javascript loaded at end of page for performance -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
     <script src="js/css3-mediaqueries.js"></script>
-    <script src='js/leaflet-hash.js'></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/modules/exporting.js"></script>
     <script src='js/app.js'></script>
     <script src="js/analytics_lib.js"></script>
   </body>

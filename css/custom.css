@@ -84,6 +84,14 @@ body {
 } 
 
 #logo { padding-left: 5px; float: left;}
+
+#chart {
+  position:absolute; 
+  top:72px; 
+  bottom:0; 
+  width:100%; 
+  z-index: 1;
+}
     
 #map { 
   position:absolute; 
