@@ -2,9 +2,9 @@ var map;
 
 $(window).resize(function () {
   var h = $(window).height(),
-    offsetTop = 80; // Calculate the top offset
+    offsetTop = 280; // Calculate the top offset
 
-  $('#chart').css('height', (h - offsetTop - 200));
+  $('#chart').css('height', (h - offsetTop));
   $('#map').css('height', (h - offsetTop));
 }).resize();
 
@@ -76,7 +76,7 @@ function init_chart(){
 
 function init_map() {
 
-    map = L.map('map').setView([41.87467,-87.62627], 9);
+    map = L.map('map').setView([41.79998325207397, -87.87277221679688], 9);
 
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
