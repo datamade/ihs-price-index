@@ -60,6 +60,26 @@ body {
   font: 16px/1.3em 'ColaborateThinRegular', sans-serif;
 }
 
+#topNav {
+  height: 72px;
+  padding: 5px 5px;
+  background: #eae9e5 url('/images/bg.png') 0 0 repeat-x;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #333;
+  margin-bottom: 5px;
+}
+    
+#topNav h2 {
+  font: 22px/1em 'GibsonBold', serif;
+  color: #615c5c;
+  text-transform: uppercase;
+  float: right;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 80px;
+}
+
 #map {
   width: 100%;
   height: 500px;
