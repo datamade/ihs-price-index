@@ -28,20 +28,15 @@ function init_chart(){
     // initialize chart
     $('#chart').highcharts({
         title: {
-            text: 'Monthly Average Temperature',
+            text: 'Cook County Housing Price Index',
             x: -20 //center
         },
-        subtitle: {
-            text: 'Source: WorldClimate.com',
-            x: -20
-        },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            type: 'datetime'
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Price Index'
             },
             plotLines: [{
                 value: 0,
@@ -50,7 +45,14 @@ function init_chart(){
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+          crosshairs: true,
+          formatter: function() {
+            var s = "<strong>" + Highcharts.dateFormat("%B %Y", this.x); + "</strong>";
+            $.each(this.points, function(i, point) {
+              s = "<br /><span style='color: " + point.series.color + "'>" + point.series.name + ":</span> " + Highcharts.numberFormat(point.y, 0);
+            });
+            return s;
+          }
         },
         legend: {
             layout: 'vertical',
@@ -58,6 +60,27 @@ function init_chart(){
             verticalAlign: 'middle',
             borderWidth: 0
         },
+        plotOptions: {
+        series: {
+          marker: {
+            radius: 0,
+            states: {
+              hover: {
+                enabled: true,
+                radius: 5
+              }
+            }
+          },
+          pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
+          pointStart: 1997,
+          shadow: false,
+          states: {
+             hover: {
+                lineWidth: 3
+             }
+          }
+        }
+      },
         series: [{
             name: 'Tokyo',
             data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
