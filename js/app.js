@@ -1,4 +1,21 @@
 $(function () {
+
+    // logic for iframe view
+    var is_iframe = false;
+    if (window.location.href.indexOf("iframe=1") >= 0) {
+      is_iframe = true;
+      $("#topNav").hide();
+      $("#chart").css("top", "0");
+      $("#map").css("top", "0");
+    }
+
+    init_chart();
+    init_map();
+
+});
+
+function init_chart(){
+    // initialize chart
     $('#chart').highcharts({
         title: {
             text: 'Monthly Average Temperature',
@@ -45,4 +62,17 @@ $(function () {
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
     });
-});
+}
+
+function init_map() {
+
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'examples.map-i875mjb7'
+    }).addTo(map);
+}
