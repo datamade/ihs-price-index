@@ -38,13 +38,18 @@ function init_chart(){
             data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
         }
-
-        series_data.push({name: v['Name'], data: data});
+        
+        if (v['Name'] == 'Cook County Average')
+          series_data.push({name: v['Name'], data: data, color: '#D95F02'});
+        else
+          series_data.push({name: v['Name'], data: data});
 
       });
   
       // initialize chart
       $('#chart').highcharts({
+          colors: ['#c6dff7', '#6c6c74', '#d0f7c8', '#fbd1ad', '#c8cbf6', 
+   '#f8aabd', '#f0e69d', '#48c8c7', '#f9abab', '#d7f7f4'],
           title: {
               text: 'Cook County Housing Price Index',
               x: -20 //center
@@ -90,7 +95,7 @@ function init_chart(){
             shadow: false,
             states: {
                hover: {
-                  lineWidth: 3
+                  lineWidth: 5
                }
             }
           }
