@@ -65,18 +65,14 @@ function init_chart(){
           tooltip: {
             crosshairs: true,
             formatter: function() {
-              var s = "<strong>" + Highcharts.dateFormat("%B %Y", this.x); + "</strong>";
-              $.each(this.points, function(i, point) {
-                s = "<br /><span style='color: " + point.series.color + "'>" + point.series.name + ":</span> " + Highcharts.numberFormat(point.y, 0);
-              });
+              console.log(this)
+              var s = "<strong>" + this.series.name + "</strong><br />" + Highcharts.dateFormat("%B %Y", this.x) + "<br />Price index: " + this.y;
+              
               return s;
             }
           },
           legend: {
-              layout: 'vertical',
-              align: 'right',
-              verticalAlign: 'middle',
-              borderWidth: 0
+              enabled: false
           },
           plotOptions: {
           series: {
@@ -90,7 +86,7 @@ function init_chart(){
               }
             },
             pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
-            pointStart: 1997,
+            pointStart: Date.UTC(1997, 0, 1),
             shadow: false,
             states: {
                hover: {
