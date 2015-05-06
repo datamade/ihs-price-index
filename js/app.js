@@ -1,5 +1,4 @@
 var map;
-
 $(window).resize(function () {
   var h = $(window).height(),
     offsetTop = 280; // Calculate the top offset
@@ -25,75 +24,83 @@ $(function () {
 });
 
 function init_chart(){
-    // initialize chart
-    $('#chart').highcharts({
-        title: {
-            text: 'Cook County Housing Price Index',
-            x: -20 //center
-        },
-        xAxis: {
-            type: 'datetime'
-        },
-        yAxis: {
-            title: {
-                text: 'Price Index'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-          crosshairs: true,
-          formatter: function() {
-            var s = "<strong>" + Highcharts.dateFormat("%B %Y", this.x); + "</strong>";
-            $.each(this.points, function(i, point) {
-              s = "<br /><span style='color: " + point.series.color + "'>" + point.series.name + ":</span> " + Highcharts.numberFormat(point.y, 0);
-            });
-            return s;
-          }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        plotOptions: {
-        series: {
-          marker: {
-            radius: 0,
-            states: {
-              hover: {
-                enabled: true,
-                radius: 5
-              }
-            }
-          },
-          pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
-          pointStart: 1997,
-          shadow: false,
-          states: {
-             hover: {
-                lineWidth: 3
-             }
+
+  $.when($.get('/data/cook_puma_trend_by_quarter.csv')).then(
+    function(data){
+      var puma_data = $.csv.toObjects(data);
+      var series_data = [];
+
+      $.each(puma_data, function(k, v){
+
+        var data = [];
+        for (var year = 1997; year < 2015; year++) {
+          for (var quarter = 1; quarter < 5; quarter++) {
+            data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
         }
-      },
-        series: [{
-            name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }, {
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-        }, {
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-        }, {
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+
+        series_data.push({name: v['Name'], data: data});
+
+      });
+  
+      // initialize chart
+      $('#chart').highcharts({
+          title: {
+              text: 'Cook County Housing Price Index',
+              x: -20 //center
+          },
+          xAxis: {
+              type: 'datetime'
+          },
+          yAxis: {
+              title: {
+                  text: 'Price Index'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }]
+          },
+          tooltip: {
+            crosshairs: true,
+            formatter: function() {
+              var s = "<strong>" + Highcharts.dateFormat("%B %Y", this.x); + "</strong>";
+              $.each(this.points, function(i, point) {
+                s = "<br /><span style='color: " + point.series.color + "'>" + point.series.name + ":</span> " + Highcharts.numberFormat(point.y, 0);
+              });
+              return s;
+            }
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle',
+              borderWidth: 0
+          },
+          plotOptions: {
+          series: {
+            marker: {
+              radius: 0,
+              states: {
+                hover: {
+                  enabled: true,
+                  radius: 5
+                }
+              }
+            },
+            pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
+            pointStart: 1997,
+            shadow: false,
+            states: {
+               hover: {
+                  lineWidth: 3
+               }
+            }
+          }
+        },
+          series: series_data
+      });
     });
 }
 

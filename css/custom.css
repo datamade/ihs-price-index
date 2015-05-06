@@ -3,7 +3,7 @@
 DePaul IHS
 */
 
-@font-face {
+/*@font-face {
     font-family: 'GibsonSemiBold';
     src: url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.eot');
     src: url('http://www.housingstudies.org/static/css/fonts/gibson-semibold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -53,7 +53,7 @@ DePaul IHS
          url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.svg#AlegreyaBold') format('svg');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
     
 body { 
