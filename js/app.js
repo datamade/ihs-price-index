@@ -75,7 +75,7 @@ function init_chart(){
       $.each(puma_data, function(k, v){
 
         var data = [];
-        for (var year = 1997; year < 2015; year++) {
+        for (var year = 2000; year < 2015; year++) {
           for (var quarter = 1; quarter < 5; quarter++) {
             data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
@@ -125,7 +125,7 @@ function init_chart(){
               }
             },
             pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
-            pointStart: Date.UTC(1997, 0, 1),
+            pointStart: Date.UTC(2000, 0, 15),
             shadow: false,
             states: {
                hover: {
@@ -189,19 +189,27 @@ function init_map() {
     function resetHighlight(e) {
       var layer = e.target;
       puma_layer.resetStyle(layer);
+      if (layer.feature.properties.PUMACE10 == "03525")
+        layer.setStyle({fillColor: '#ccc'});
+      else
+        chart.series[chart_series[layer.feature.properties.PUMACE10]].setState();
       info.update();
-      chart.series[chart_series[layer.feature.properties.PUMACE10]].setState();
     }
 
     function highlightFeature(e) {
       var layer = e.target;
+      var color = '#ccc';
+      if (chart.series[chart_series[layer.feature.properties.PUMACE10]] != undefined) {
+        color = chart.series[chart_series[layer.feature.properties.PUMACE10]].color;
+        chart.series[chart_series[layer.feature.properties.PUMACE10]].setState('hover');
+      }
 
       layer.setStyle({
         weight: 5,
         color: '#fff',
         dashArray: '',
         fillOpacity: 0.7,
-        fillColor: chart.series[chart_series[layer.feature.properties.PUMACE10]].color
+        fillColor: color
       });
 
       if (!L.Browser.ie && !L.Browser.opera) {
@@ -209,8 +217,6 @@ function init_map() {
       }
 
       info.update(layer.feature.properties);
-
-      chart.series[chart_series[layer.feature.properties.PUMACE10]].setState('hover');
     }
 
     function onEachFeature(feature, layer) {
@@ -228,6 +234,8 @@ function init_map() {
         }).addTo(map);
 
         puma_layer.eachLayer(function (layer) {
+          if (layer.feature.properties.PUMACE10 == "03525")
+            layer.setStyle({fillColor: '#ccc'});
           leaflet_features[layer.feature.properties.PUMACE10] = layer._leaflet_id;
         });
     });
