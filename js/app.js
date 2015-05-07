@@ -38,34 +38,29 @@ function init_chart(){
             data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
         }
-        
+
         if (v['Name'] == 'Cook County Average')
-          series_data.push({name: v['Name'], data: data, color: '#D95F02'});
+          console.log('a')
+          // series_data.push({name: v['Name'], data: data, color: '#cccccc', lineWidth: 20, zIndex: -1});
         else
-          series_data.push({name: v['Name'], data: data});
+          series_data.push({name: v['Name'], data: data, lineWidth: 2});
 
       });
   
       // initialize chart
       $('#chart').highcharts({
-          colors: ['#c6dff7', '#6c6c74', '#d0f7c8', '#fbd1ad', '#c8cbf6', 
-   '#f8aabd', '#f0e69d', '#48c8c7', '#f9abab', '#d7f7f4'],
           title: {
-              text: 'Cook County Housing Price Index',
+              text: null,
               x: -20 //center
           },
+          credits: { enabled: false },
           xAxis: {
               type: 'datetime'
           },
           yAxis: {
               title: {
                   text: 'Price Index'
-              },
-              plotLines: [{
-                  value: 0,
-                  width: 1,
-                  color: '#808080'
-              }]
+              }
           },
           tooltip: {
             crosshairs: true,
