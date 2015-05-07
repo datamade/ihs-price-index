@@ -3,6 +3,7 @@ var chart;
 var puma_layer;
 var leaflet_features = {};
 var chart_series = {};
+var feature_color = '';
 
 var puma_lookup = { '03501': 'Uptown/Rogers Park',
                     '03502': 'Lake View/Lincoln Park',
@@ -134,6 +135,7 @@ function init_chart(){
             events: {
               mouseOver: function () {
                 map._layers[leaflet_features[this.name]].fireEvent('mouseover');
+                map._layers[leaflet_features[this.name]].setStyle({fillColor: this.color});
               },
               mouseOut: function () {
                 map._layers[leaflet_features[this.name]].fireEvent('mouseout');
@@ -176,7 +178,7 @@ function init_map() {
     function puma_style(feature){
         var style = {
             "color": "white",
-            "fillColor": "#0570b0",
+            "fillColor": "#0855CD",
             "opacity": 1,
             "weight": 1,
             "fillOpacity": 0.5,
@@ -196,9 +198,10 @@ function init_map() {
 
       layer.setStyle({
         weight: 5,
-        color: '#666',
+        color: '#fff',
         dashArray: '',
-        fillOpacity: 0.7
+        fillOpacity: 0.7,
+        fillColor: chart.series[chart_series[layer.feature.properties.PUMACE10]].color
       });
 
       if (!L.Browser.ie && !L.Browser.opera) {

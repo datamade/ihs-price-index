@@ -63,6 +63,7 @@ body {
 h1 {
   font: 32px/1em 'GibsonBold', serif;
   text-transform: uppercase;
+  color: #827E7E;
 }
 
 #topNav {
