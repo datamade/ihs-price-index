@@ -1,4 +1,6 @@
 var map;
+var puma_layer;
+var leaflet_features = {};
 
 var puma_lookup = { '03501': 'Uptown/Rogers Park',
                     '03502': 'Lake View/Lincoln Park',
@@ -128,11 +130,10 @@ function init_chart(){
             },
             events: {
               mouseOver: function () {
-                console.log('over');
-                console.log(this);
+                map._layers[leaflet_features[this.name]].fireEvent('mouseover');
               },
               mouseOut: function () {
-                console.log('out');
+                map._layers[leaflet_features[this.name]].fireEvent('mouseout');
               }
             }
           }
@@ -145,7 +146,6 @@ function init_chart(){
 function init_map() {
 
     map = L.map('map').setView([41.79998325207397, -87.87277221679688], 9);
-    var puma_layer;
 
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
@@ -216,6 +216,10 @@ function init_map() {
             style: puma_style,
             onEachFeature: onEachFeature
         }).addTo(map);
+
+        puma_layer.eachLayer(function (layer) {
+          leaflet_features[layer.feature.properties.PUMACE10] = layer._leaflet_id;
+        });
     });
 }
 
