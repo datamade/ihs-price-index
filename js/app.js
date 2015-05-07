@@ -1,6 +1,8 @@
 var map;
+var chart;
 var puma_layer;
 var leaflet_features = {};
+var chart_series = {};
 
 var puma_lookup = { '03501': 'Uptown/Rogers Park',
                     '03502': 'Lake View/Lincoln Park',
@@ -78,38 +80,39 @@ function init_chart(){
           }
         }
 
+        chart_series[v['PumaID']] = k;
         series_data.push({name: v['PumaID'], data: data, lineWidth: 2});
 
       });
   
       // initialize chart
-      $('#chart').highcharts({
-          title: {
-              text: null,
-              x: -20 //center
-          },
-          credits: { enabled: false },
-          xAxis: {
-              type: 'datetime'
-          },
-          yAxis: {
-              title: {
-                  text: 'Price Index'
-              }
-          },
-          tooltip: {
-            crosshairs: true,
-            formatter: function() {
-              console.log(this)
-              var s = "<strong>" + puma_lookup[this.series.name] + "</strong><br />" + Highcharts.dateFormat("%B %Y", this.x) + "<br />Price index: " + this.y;
-              
-              return s;
+      chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'chart'
+        },
+        title: {
+            text: null,
+            x: -20 //center
+        },
+        credits: { enabled: false },
+        xAxis: { type: 'datetime' },
+        yAxis: {
+            title: {
+                text: 'Price Index'
             }
-          },
-          legend: {
-              enabled: false
-          },
-          plotOptions: {
+        },
+        tooltip: {
+          crosshairs: true,
+          formatter: function() {
+            var s = "<strong>" + puma_lookup[this.series.name] + "</strong><br />" + Highcharts.dateFormat("%B %Y", this.x) + "<br />Price index: " + this.y;
+            
+            return s;
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
           series: {
             marker: {
               radius: 0,
@@ -138,7 +141,7 @@ function init_chart(){
             }
           }
         },
-          series: series_data
+        series: series_data
       });
     });
 }
@@ -182,8 +185,10 @@ function init_map() {
     }
 
     function resetHighlight(e) {
-      puma_layer.resetStyle(e.target);
+      var layer = e.target;
+      puma_layer.resetStyle(layer);
       info.update();
+      chart.series[chart_series[layer.feature.properties.PUMACE10]].setState();
     }
 
     function highlightFeature(e) {
@@ -201,6 +206,8 @@ function init_map() {
       }
 
       info.update(layer.feature.properties);
+
+      chart.series[chart_series[layer.feature.properties.PUMACE10]].setState('hover');
     }
 
     function onEachFeature(feature, layer) {
