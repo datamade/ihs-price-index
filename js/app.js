@@ -99,6 +99,7 @@ function init_chart(){
 function init_map() {
 
     map = L.map('map').setView([41.79998325207397, -87.87277221679688], 9);
+    var puma_layer;
 
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
@@ -106,24 +107,69 @@ function init_map() {
         id: 'datamade.hn83a654'
     }).addTo(map);
 
+    // control that shows state info on hover
+    var info = L.control();
+
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'info');
+      this.update();
+      return this._div;
+    };
+
+    info.update = function (props) {
+      this._div.innerHTML = (props ?
+        '<b>' + props.NAMELSAD10 + '</b>'
+        : 'Hover over an area');
+    };
+
+    info.addTo(map);
+
+    function puma_style(feature){
+        var style = {
+            "color": "white",
+            "fillColor": "#0570b0",
+            "opacity": 1,
+            "weight": 1,
+            "fillOpacity": 0.5,
+        }
+        return style;
+    }
+
+    function resetHighlight(e) {
+      puma_layer.resetStyle(e.target);
+      info.update();
+    }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+      }
+
+      info.update(layer.feature.properties);
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight
+      });
+    }
+
     $.when($.getJSON('data/pumas.geojson')).then(
       function(pumas){
-        L.geoJson(pumas, {
+        puma_layer = L.geoJson(pumas, {
             style: puma_style,
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.NAMELSAD10);
-            }
+            onEachFeature: onEachFeature
         }).addTo(map);
     });
 }
 
-function puma_style(feature){
-    var style = {
-        "color": "white",
-        "fillColor": "#0570b0",
-        "opacity": 1,
-        "weight": 1,
-        "fillOpacity": 0.5,
-    }
-    return style;
-}
