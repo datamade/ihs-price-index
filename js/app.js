@@ -39,11 +39,7 @@ function init_chart(){
           }
         }
 
-        if (v['Name'] == 'Cook County Average')
-          console.log('a')
-          // series_data.push({name: v['Name'], data: data, color: '#cccccc', lineWidth: 20, zIndex: -1});
-        else
-          series_data.push({name: v['Name'], data: data, lineWidth: 2});
+        series_data.push({name: v['Name'], data: data, lineWidth: 2});
 
       });
   
