@@ -34,33 +34,29 @@
 
     <div class="container-fluid">
       <div class='row'>
+        <div class='col-sm-8'>
+            <div id='chart'></div>
+        </div>
         <div class='col-sm-4'>
             <div id='map'></div>
         </div>
-        <div class='col-sm-8'>
-            <div id='chart'></div>
-            <table class='table'>
-              <thead>
-                <tr>
-                  <td></td>
-                  <td>Change from peak to current</td>
-                  <td>Change from peak to bottom</td>
-                  <td>Change since 2000</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td id='puma'>Cook County</td>
-                  <td id='peak_current'>-30.65%</td>
-                  <td id='peak_bottom'>-42.12%</td>
-                  <td id='change'>38.24%</td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+
       </div>
 
       <p><br />Peak to Current – In many ways, this metric measures the volatility of an area’s housing market and a measurement of the recovery of a neighborhood’s house prices towards previous price peaks.  Often, neighborhoods with substantial build up in prices during the housing bubble, saw equally dramatic declines.  While, in many cases, those price peaks were inflated and unsustainable, this metric is an important benchmark for homeowners who bought their homes or obtained a mortgage near the peak from 2005 to 2007.</p>
+
+      <table class='table' id='indicators_table'>
+        <thead>
+          <tr>
+            <td>Area (PUMA)</td>
+            <td>Change since 2000</td>
+            <td>Change from peak to current</td>
+            <td>Change from peak to bottom</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
     </div><!-- /.container -->
 

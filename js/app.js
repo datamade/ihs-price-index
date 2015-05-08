@@ -51,6 +51,7 @@ function init_chart(){
       });
 
       init_map();
+      init_table();
   
       // initialize chart
       chart = new Highcharts.Chart({
@@ -95,7 +96,7 @@ function init_chart(){
             shadow: false,
             states: {
                hover: {
-                  lineWidth: 5
+                  lineWidth: 7
                }
             },
             events: {
@@ -137,8 +138,6 @@ function init_map() {
       this._div.innerHTML = (props ?
         '<b>' + puma_lookup[props.PUMACE10].Name + '</b>'
         : 'Hover over an area');
-
-      $('#')
     };
 
     info.addTo(map);
@@ -209,3 +208,24 @@ function init_map() {
     });
 }
 
+function init_table() {
+  $.each(puma_lookup, function(k,v){
+    var row = "\
+      <tr>\
+        <td style='width: 35%'>" + v.Name + "</td>\
+        <td class='" + table_style(v['Change Since 2000']) + "'>" + v['Change Since 2000'] + "%</td>\
+        <td class='" + table_style(v['Change Peak to Current']) + "'>" + v['Change Peak to Current'] + "%</td>\
+        <td class='" + table_style(v['Change Peak to Bottom']) + "'>" + v['Change Peak to Bottom'] + "%</td>\
+      </tr>";
+
+    $('#indicators_table tbody').append(row);
+
+  });
+}
+
+function table_style(number) {
+  if (number <= 0 )
+    return 'danger';
+  else if (number > 0)
+    return 'success'; 
+}
