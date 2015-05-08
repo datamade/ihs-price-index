@@ -29,18 +29,34 @@
 
     <div id="topNav">
       <a class='pull-left' id='logo' href="http://www.housingstudies.org/"><img src='/images/ihs-logo.png' alt='DePaul Institute for Housing Studies' /></a>
-      <!-- <h2>Cook County Housing Price Index</h2> -->
+      <h2>Cook County Housing Price Index</h2>
     </div>
 
     <div class="container-fluid">
-      <h1>Cook County Housing Price Index</h1>
       <div class='row'>
-        <div class='col-sm-8'>
-            <div id='chart'></div>
-        </div>
-
         <div class='col-sm-4'>
             <div id='map'></div>
+        </div>
+        <div class='col-sm-8'>
+            <div id='chart'></div>
+            <table class='table'>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>Change from peak to current</td>
+                  <td>Change from peak to bottom</td>
+                  <td>Change since 2000</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id='puma'>Cook County</td>
+                  <td id='peak_current'>-30.65%</td>
+                  <td id='peak_bottom'>-42.12%</td>
+                  <td id='change'>38.24%</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
       </div>
 
