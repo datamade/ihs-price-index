@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datatables.bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/leaflet.css" type="text/css" media="screen" />
 
     <!-- Custom styles for this template -->
@@ -45,18 +46,23 @@
 
       <p><br />Peak to Current – In many ways, this metric measures the volatility of an area’s housing market and a measurement of the recovery of a neighborhood’s house prices towards previous price peaks.  Often, neighborhoods with substantial build up in prices during the housing bubble, saw equally dramatic declines.  While, in many cases, those price peaks were inflated and unsustainable, this metric is an important benchmark for homeowners who bought their homes or obtained a mortgage near the peak from 2005 to 2007.</p>
 
-      <table class='table' id='indicators_table'>
-        <thead>
-          <tr>
-            <td>Area (PUMA)</td>
-            <td>Change since 2000</td>
-            <td>Change from peak to current</td>
-            <td>Change from peak to bottom</td>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class='row'>
+        <div class='col-sm-8'>
+          <h2>Key indicators</h2>
+          <table class='table table-condensed' id='indicators_table'>
+            <thead>
+              <tr>
+                <th>Area (PUMA)</th>
+                <th>Change since 2000</th>
+                <th>Change from peak to current</th>
+                <th>Change from peak to bottom</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     </div><!-- /.container -->
 
@@ -69,6 +75,8 @@
     <script src="js/highcharts.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/jquery.csv.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.js"></script>
     <script src='js/app.js'></script>
     <script src="js/analytics_lib.js"></script>
   </body>

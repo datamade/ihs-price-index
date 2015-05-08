@@ -117,7 +117,7 @@ function init_chart(){
 
 function init_map() {
 
-    map = L.map('map').setView([41.79998325207397, -87.87277221679688], 9);
+    map = L.map('map', { scrollWheelZoom: false }).setView([41.79998325207397, -87.87277221679688], 9);
 
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
@@ -221,6 +221,19 @@ function init_table() {
     $('#indicators_table tbody').append(row);
 
   });
+
+  $('#indicators_table').dataTable( {
+    "aaSorting": [ [1,'desc'] ],
+    "aoColumns": [
+        null,
+        null,
+        null,
+        null
+    ],
+    "bInfo": false,
+    "bPaginate": false,
+    "bFilter": false
+} );
 }
 
 function table_style(number) {
