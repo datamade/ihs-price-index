@@ -92,15 +92,16 @@ function init_chart(){
               }
             },
             pointInterval: (3 * 30.4 * 24 * 3600 * 1000),  
-            pointStart: Date.UTC(2000, 0, 15),
+            pointStart: Date.UTC(2000, 2, 15),
             shadow: false,
             states: {
                hover: {
-                  lineWidth: 7
+                  lineWidth: 10
                }
             },
             events: {
               mouseOver: function () {
+                chart.series[this.index].group.toFront();
                 map._layers[leaflet_features[this.name]].fireEvent('mouseover');
                 map._layers[leaflet_features[this.name]].setStyle({fillColor: this.color});
               },
@@ -169,6 +170,7 @@ function init_map() {
       if (chart.series[chart_series[layer.feature.properties.PUMACE10]] != undefined) {
         color = chart.series[chart_series[layer.feature.properties.PUMACE10]].color;
         chart.series[chart_series[layer.feature.properties.PUMACE10]].setState('hover');
+        chart.series[chart_series[layer.feature.properties.PUMACE10]].group.toFront();
       }
 
       layer.setStyle({
