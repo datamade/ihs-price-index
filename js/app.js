@@ -131,7 +131,8 @@ function init_map() {
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-        id: 'datamade.hn83a654'
+        id: 'datamade.hn83a654',
+        detectRetina: true
     }).addTo(map);
 
     // control that shows state info on hover

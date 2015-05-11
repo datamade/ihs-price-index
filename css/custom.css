@@ -66,6 +66,12 @@ h1 {
   color: #827E7E;
 }
 
+h2 {
+  font: 22px/1em 'GibsonBold', serif;
+  text-transform: uppercase;
+  color: #827E7E;
+}
+
 #topNav {
   height: 72px;
   padding: 5px 5px;
