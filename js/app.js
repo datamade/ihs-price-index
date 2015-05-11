@@ -66,13 +66,16 @@ function init_chart(){
         xAxis: { type: 'datetime' },
         yAxis: {
             title: {
-                text: 'Price Index'
+                text: 'Price Change Since 2000 (%)'
             }
         },
         tooltip: {
           crosshairs: true,
           formatter: function() {
-            var s = "<strong>" + puma_lookup[this.series.name].Name + "</strong><br />" + Highcharts.dateFormat("%B %Y", this.x) + "<br />Price index: " + this.y;
+            var val = this.y;
+            if (this.y >= 0)
+              val = "+" + this.y;
+            var s = "<strong>" + puma_lookup[this.series.name].Name + "</strong><br />" + Highcharts.dateFormat("%B %Y", this.x) + "<br />Price change since 2000: " + val + "%";
             
             return s;
           }
@@ -217,7 +220,7 @@ function init_table() {
         <td style='width: 35%'>" + v.Name + "</td>\
         <td class='" + table_style(v['Change Since 2000']) + "'>" + v['Change Since 2000'] + "%</td>\
         <td class='" + table_style(v['Change Peak to Current']) + "'>" + v['Change Peak to Current'] + "%</td>\
-        <td class='" + table_style(v['Change Peak to Bottom']) + "'>" + v['Change Peak to Bottom'] + "%</td>\
+        <td class='" + table_style(v['Change Bottom to Current']) + "'>" + v['Change Bottom to Current'] + "%</td>\
       </tr>";
 
     $('#indicators_table tbody').append(row);
