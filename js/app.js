@@ -66,8 +66,13 @@ function init_chart(){
         xAxis: { type: 'datetime' },
         yAxis: {
             title: {
-                text: 'Price Change Since 2000 (%)'
-            }
+                text: 'Price Change Since 2000'
+            },
+            labels: {
+                formatter: function() {
+                    return this.value + ' %';
+                }
+            },
         },
         tooltip: {
           crosshairs: true,
