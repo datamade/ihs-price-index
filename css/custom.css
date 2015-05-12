@@ -76,6 +76,8 @@ h2 {
   margin-top: 20px;
 }
 
+#logo img { width: 170px; }
+
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
