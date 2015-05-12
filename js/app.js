@@ -227,9 +227,9 @@ function init_table() {
     var row = "\
       <tr>\
         <td style='width: 35%'>" + v.Name + "</td>\
-        <td class='" + table_style(v['Change Since 2000']) + "'>" + v['Change Since 2000'] + "%</td>\
-        <td class='" + table_style(v['Change Peak to Current']) + "'>" + v['Change Peak to Current'] + "%</td>\
-        <td class='" + table_style(v['Change Bottom to Current']) + "'>" + v['Change Bottom to Current'] + "%</td>\
+        " + table_row(v['Change Since 2000']) + "\
+        " + table_row(v['Change Peak to Current']) + "\
+        " + table_row(v['Change Bottom to Current']) + "\
       </tr>";
 
     $('#indicators_table tbody').append(row);
@@ -247,12 +247,14 @@ function init_table() {
     "bInfo": false,
     "bPaginate": false,
     "bFilter": false
-} );
+  });
 }
 
-function table_style(number) {
-  if (number <= 0 )
-    return 'danger';
-  else if (number > 0)
-    return 'success'; 
+function table_row(value) {
+  var style = 'danger';
+  if (value >= 0) {
+    style = 'success';
+    value = "+" + value;
+  }
+  return "<td class='" + style + "'>" + value + "%</td>";
 }
