@@ -26,6 +26,7 @@ $(function () {
     }
 
     init_chart();
+    $('#indicators_table span').popover({trigger: "hover", placement: "top"})
 
 });
 
@@ -216,6 +217,8 @@ function init_map() {
             layer.setStyle({fillColor: '#ccc'});
           leaflet_features[layer.feature.properties.PUMACE10] = layer._leaflet_id;
         });
+
+        map.fitBounds(puma_layer.getBounds());
     });
 }
 
