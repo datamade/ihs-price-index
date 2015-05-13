@@ -146,9 +146,14 @@ function init_map() {
     };
 
     info.update = function (props) {
-      this._div.innerHTML = (props ?
-        '<b>' + puma_lookup[props.PUMACE10].Name + '</b>'
-        : 'Hover over an area');
+      var text = 'Hover over an area';
+      if (props) {
+        if (puma_lookup[props.PUMACE10])
+          text = puma_lookup[props.PUMACE10].Name
+        else
+          text = "Chicago--Loop (not enough data)";
+      }
+      this._div.innerHTML = '<b>' + text + '</b>';
     };
 
     info.addTo(map);
