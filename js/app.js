@@ -32,7 +32,7 @@ $(function () {
 
 function init_chart(){
 
-  $.when($.get('/data/cook_puma_trend_by_quarter.csv')).then(
+  $.when($.get('/data/cook_puma_trend_by_quarter_q2.csv')).then(
     function(data){
       var puma_data = $.csv.toObjects(data);
       var series_data = [];
@@ -40,9 +40,10 @@ function init_chart(){
       $.each(puma_data, function(k, v){
         puma_lookup[v['PumaID']] = v;
         var data = [];
-        for (var year = 2000; year < 2015; year++) {
+        for (var year = 2000; year <= 2015; year++) {
           for (var quarter = 1; quarter < 5; quarter++) {
-            data.push(parseFloat(v[ year + 'Q' + quarter ]));
+            if (v[ year + 'Q' + quarter ] != undefined)
+              data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
         }
 
