@@ -27,17 +27,17 @@ for row in rotated_rows:
             change = (float(cell) - float(row[baseline_index]))
             changeified_row.append(change)
     
-    peak_to_current = '%.2f' % (float(changeified_row[-1]) - float(max(changeified_row)))
-    peak_to_bottom = '%.2f' % (float(min(changeified_row)) - float(max(changeified_row)))
-    change_since_base = '%.2f' % (float(changeified_row[-1]) - float(changeified_row[baseline_index]))
-    bottom_to_current = '%.2f' % (float(changeified_row[-1]) - float(min(changeified_row)))
+    peak_to_current = '%.1f' % (float(changeified_row[-1]) - float(max(changeified_row)))
+    peak_to_bottom = '%.1f' % (float(min(changeified_row)) - float(max(changeified_row)))
+    change_since_base = '%.1f' % (float(changeified_row[-1]) - float(changeified_row[baseline_index]))
+    bottom_to_current = '%.1f' % (float(changeified_row[-1]) - float(min(changeified_row)))
 
     changeified_row.extend([peak_to_current, 
                             peak_to_bottom, 
                             change_since_base, 
                             bottom_to_current])
     
-    changeified_row = ['%.2f' % float(i) for i in changeified_row]
+    changeified_row = ['%.1f' % float(i) for i in changeified_row]
 
     changes.append(changeified_row)
 
