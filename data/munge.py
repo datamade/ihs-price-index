@@ -43,7 +43,7 @@ for row in rotated_rows:
 
 changes_header = ['Change Peak to Current', 
                   'Change Peak to Bottom', 
-                  'Change since 2000',
+                  'Change Since 2000',
                   'Change Bottom to Current']
 
 header = ['PumaID', 'Name'] + quarters + changes_header
