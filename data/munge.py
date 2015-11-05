@@ -4,6 +4,7 @@ with open('2015_q2_data_for_web_final.csv', 'r') as f:
     reader = csv.reader(f)
 
     puma_ids = next(reader)[1:]
+    puma_ids = [i[1:].zfill(5) for i in puma_ids]
     puma_names = next(reader)[1:]
 
     rotated_rows = [[] for i in range(len(puma_ids) + 1)]
