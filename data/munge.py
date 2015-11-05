@@ -57,9 +57,9 @@ with open('2015_q2_data_for_web_final_summary.csv', 'r') as f:
             break
 
 summary_header = ['Change Peak to Current', 
-                  'Change Peak to Bottom', 
-                  'Change Since 2000', 
-                  'Change Bottom to Current']
+                  'Change Since 2000',  
+                  'Change Bottom to Current',
+                  'Change Peak to Bottom']
 
 header = ['PumaID', 'Name'] + quarters + summary_header
 
