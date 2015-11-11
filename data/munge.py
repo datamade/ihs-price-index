@@ -51,6 +51,8 @@ with open('2015_q2_data_for_web_final_summary.csv', 'r') as f:
         puma_id = row[0][1:].zfill(5)
         try:
             full_row = row_mapper[puma_id]
+
+            # ignore the first 2 columns and chop off the % sign
             full_row.extend([i[:-1] for i in row[2:]])
             rows_with_summary.append(full_row)
         except KeyError:
@@ -59,7 +61,7 @@ with open('2015_q2_data_for_web_final_summary.csv', 'r') as f:
 summary_header = ['Change Peak to Current', 
                   'Change Since 2000',  
                   'Change Bottom to Current',
-                  'Change Peak to Bottom']
+                  'Year-over-year change']
 
 header = ['PumaID', 'Name'] + quarters + summary_header
 

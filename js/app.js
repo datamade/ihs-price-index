@@ -230,12 +230,14 @@ function init_map() {
 
 function init_table() {
   $.each(puma_lookup, function(k,v){
+    console.log(v)
     var row = "\
       <tr>\
         <td style='width: 35%'>" + v.Name + "</td>\
         " + table_row(v['Change Since 2000']) + "\
         " + table_row(v['Change Peak to Current']) + "\
         " + table_row(v['Change Bottom to Current']) + "\
+        " + table_row(v['Year-over-year change']) + "\
       </tr>";
 
     $('#indicators_table tbody').append(row);
@@ -245,6 +247,7 @@ function init_table() {
   $('#indicators_table').dataTable( {
     "aaSorting": [ [1,'desc'] ],
     "aoColumns": [
+        null,
         null,
         null,
         null,
