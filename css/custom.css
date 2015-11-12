@@ -66,6 +66,12 @@ h1 {
   color: #827E7E;
 }
 
+h1 small {
+  font: 18px/1em 'GibsonSemiBold', serif;
+  color: #aca9a9;
+  margin-left: 10px;
+}
+
 h2 {
   font: 22px/1em 'GibsonBold', serif;
   text-transform: uppercase;
