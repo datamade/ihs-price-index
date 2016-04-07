@@ -21,7 +21,7 @@ We used the following open source tools:
 ## Team
 
 * Derek Eder - developer, content
-* Eric van Zanten - developer, GIS data merging
+* Eric van Zanten - developer, GIS data
 
 ## Errors / Bugs
 
