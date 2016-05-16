@@ -17,7 +17,7 @@ $(function () {
 
 function init_chart(){
 
-  $.when($.get('/data/cook_puma_trend_by_quarter_q2.csv')).then(
+  $.when($.get('/data/cook_puma_trend_by_quarter.csv')).then(
     function(data){
       var puma_data = $.csv.toObjects(data);
       var series_data = [];
