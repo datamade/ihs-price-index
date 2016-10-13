@@ -58,8 +58,8 @@ with open('2016_q2_data_for_web_final_summary.csv', 'r') as f:
         except KeyError:
             break
 
-summary_header = ['Change Peak to Current', 
-                  'Change Since 2000',  
+summary_header = ['Change Since 2000',
+                  'Change Peak to Current',
                   'Change Bottom to Current',
                   'Year-over-year change']
 
