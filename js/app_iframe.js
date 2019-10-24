@@ -30,7 +30,7 @@ function init_chart(){
             if (v[ year + 'Q' + quarter ] != undefined)
               data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
-        }
+        } 
 
         chart_series[v['PumaID']] = k;
         series_data.push({name: v['PumaID'], data: data, lineWidth: 2});
