@@ -62,7 +62,7 @@ summary_header = ['Change Since 2000',
                   'Change Peak to Current',
                   'Change Bottom to Current',
                   'Year-over-year change',
-                  'Quarter-over-quarter change']
+                  'Median Sales Price']
 
 header = ['PumaID', 'Name'] + quarters + summary_header
 
