@@ -238,6 +238,7 @@ function init_table() {
         " + table_row(v['Change Peak to Current']) + "\
         " + table_row(v['Change Bottom to Current']) + "\
         " + table_row(v['Year-over-year change']) + "\
+        " + plain_row(v['Median Sales Price']) + "\
       </tr>";
 
     $('#indicators_table tbody').append(row);
@@ -247,6 +248,7 @@ function init_table() {
   $('#indicators_table').dataTable( {
     "aaSorting": [ [1,'desc'] ],
     "aoColumns": [
+        null,
         null,
         null,
         null,
@@ -266,4 +268,8 @@ function table_row(value) {
     value = "+" + value;
   }
   return "<td class='" + style + "'>" + value + "%</td>";
+}
+
+function plain_row(value) {
+  return "<td>" + value + "</td>";
 }

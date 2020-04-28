@@ -30,7 +30,7 @@ function init_chart(){
             if (v[ year + 'Q' + quarter ] != undefined)
               data.push(parseFloat(v[ year + 'Q' + quarter ]));
           }
-        }
+        }  
 
         chart_series[v['PumaID']] = k;
         series_data.push({name: v['PumaID'], data: data, lineWidth: 2});
@@ -43,7 +43,7 @@ function init_chart(){
             renderTo: 'chart'
         },
         title: {
-            text: "Cook County House Price Index: Jan 2000 - Jun 2019",
+            text: "Cook County House Price Index: Jan 2000 - Dec 2019",
             x: -20 //center
         },
         credits: { enabled: false },
