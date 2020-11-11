@@ -1,6 +1,8 @@
 import csv
 
-with open('2019_q4_price_index_by_quarter.csv', 'r') as f:
+file_prefix = "2020_q2_"
+
+with open(file_prefix + 'price_index_by_quarter.csv', 'r') as f:
     reader = csv.reader(f)
 
     puma_ids = next(reader)[1:]
@@ -42,7 +44,7 @@ for row in rows_plus_names:
     row_mapper[row[0]] = row
 
 rows_with_summary = []
-with open('2019_q4_price_index_summary.csv', 'r') as f:
+with open(file_prefix + 'price_index_summary.csv', 'r') as f:
     reader = csv.reader(f)
 
     next(reader)

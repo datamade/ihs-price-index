@@ -40,7 +40,7 @@ function init_chart(){
       $.each(puma_data, function(k, v){
         puma_lookup[v['PumaID']] = v;
         var data = [];
-        for (var year = 2000; year <= 2019; year++) {
+        for (var year = 2000; year <= 2020; year++) {
           for (var quarter = 1; quarter < 5; quarter++) {
             if (v[ year + 'Q' + quarter ] != undefined)
               data.push(parseFloat(v[ year + 'Q' + quarter ]));
@@ -130,10 +130,10 @@ function init_map() {
 
     map = L.map('map', { scrollWheelZoom: false }).setView([41.79998325207397, -87.87277221679688], 9);
 
-    L.tileLayer('https://{s}.tiles.mapbox.com/v3/datamade.hn83a654/{z}/{x}/{y}.png', {
+    L.mapbox.styleLayer('mapbox://styles/datamade/ckhdoudap025v19o2bfmiwcis', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-        id: 'datamade.hn83a654',
+        accessToken: "pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA",
         detectRetina: true
     }).addTo(map);
 
@@ -230,7 +230,7 @@ function init_map() {
 
 function init_table() {
   $.each(puma_lookup, function(k,v){
-    console.log(v)
+    // console.log(v)
     var row = "\
       <tr>\
         <td style='width: 35%'>" + v.Name + "</td>\

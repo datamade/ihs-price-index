@@ -10,13 +10,28 @@ python -m SimpleHTTPServer
 
 navigate to http://localhost:8000/
 
-# Web dependencies
+## Dependencies
 We used the following open source tools:
 
 * [Bootstrap](http://getbootstrap.com/) - Responsive HTML, CSS and Javascript framework
 * [Leaflet](http://leafletjs.com/) - javascript library interactive maps
 * [HighCharts](http://www.highcharts.com/) - javascript library online, interactive charts
-* [GitHub pages](https://pages.github.com/) - free static website hosting
+
+## Data updates
+
+The Price Index is updated twice a year with data from the IHS team. Data is shared in an excel spreadsheet with several tabs.
+
+Steps to update:
+
+1. Open up the excel file and export two sheets: index by quarter and the summary table. Save these sheets as `csv`.
+2. Ensure that the format of these sheets matches the existing files in the `/data` folder. There are often times slight differences in the column titles and additional rows and columns that need to be removed.
+3. Once the files are cleaned up, move them into the `/data` folder.
+4. Open up a terminal and cd into the `/data` folder. Activate your python3 virtual env. There are no requirements to install.
+5. Run `python munge.py`. It will update the `cook_puma_trend_by_quarter.csv` file.
+6. Open up `index.html`, `js/app.js` and `js/app_iframe.js` and replace any references to the previous update's files with the new ones.
+7. The chart titles on `index.html` and `js/app_iframe.js` will also need to be updated.
+
+You can view an example PR for one of these updates here: https://github.com/datamade/ihs-price-index/pull/4
 
 ## Team
 
