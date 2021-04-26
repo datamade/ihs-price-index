@@ -1,6 +1,6 @@
 import csv
 
-file_prefix = "2020_q2_"
+file_prefix = "2020_q4_"
 
 with open(file_prefix + 'price_index_by_quarter.csv', 'r') as f:
     reader = csv.reader(f)
