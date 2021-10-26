@@ -52,4 +52,4 @@ Report it here: https://github.com/datamade/ihs-price-index/issues
 
 ## Copyright
 
-Copyright (c) 2015 DataMade. Released under the [MIT License](https://github.com/datamade/ihs-price-index/blob/master/LICENSE).
+Copyright (c) 2021 DataMade. Released under the [MIT License](https://github.com/datamade/ihs-price-index/blob/main/LICENSE).
