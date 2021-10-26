@@ -1,6 +1,6 @@
 import csv
 
-file_prefix = "2020_q4_"
+file_prefix = "2021_q2_"
 
 with open(file_prefix + 'price_index_by_quarter.csv', 'r') as f:
     reader = csv.reader(f)
@@ -73,4 +73,4 @@ with open('cook_puma_trend_by_quarter.csv', 'w') as outp:
     writer.writerow(header)
     writer.writerows(rows_with_summary)
 
-
+print("done!")
