@@ -43,7 +43,7 @@ function init_chart(){
             renderTo: 'chart'
         },
         title: {
-            text: "Cook County House Price Index: Jan 2000 - Jun 2021",
+            text: "Cook County House Price Index: Jan 2000 - Dec 2021",
             x: -20 //center
         },
         credits: { enabled: false },
