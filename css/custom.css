@@ -60,6 +60,10 @@ body {
   font: 18px/1.3em 'ColaborateThinRegular', sans-serif;
 }
 
+a {
+  color: #3379C5;
+}
+
 h1 {
   font: 32px/1em 'GibsonBold', serif;
   text-transform: uppercase;
