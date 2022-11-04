@@ -237,6 +237,7 @@ function init_table() {
         " + table_row(v['Change Since 2000']) + "\
         " + table_row(v['Change Peak to Current']) + "\
         " + table_row(v['Change Bottom to Current']) + "\
+        " + table_row(v['COVID-19 Pandemic Start to Current']) + "\
         " + table_row(v['Year-over-year change']) + "\
         " + plain_row(v['Median Sales Price']) + "\
       </tr>";
@@ -248,6 +249,7 @@ function init_table() {
   $('#indicators_table').dataTable( {
     "aaSorting": [ [1,'desc'] ],
     "aoColumns": [
+        null,
         null,
         null,
         null,
