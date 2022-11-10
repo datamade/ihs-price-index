@@ -1,6 +1,6 @@
 import csv
 
-file_prefix = "2021_q4_"
+file_prefix = "2022_q2_"
 
 with open(file_prefix + 'price_index_by_quarter.csv', 'r') as f:
     reader = csv.reader(f)
@@ -63,6 +63,7 @@ with open(file_prefix + 'price_index_summary.csv', 'r') as f:
 summary_header = ['Change Since 2000',
                   'Change Peak to Current',
                   'Change Bottom to Current',
+                  'COVID-19 Pandemic Start to Current',
                   'Year-over-year change',
                   'Median Sales Price']
 
