@@ -40,7 +40,7 @@ function init_chart(){
       $.each(puma_data, function(k, v){
         puma_lookup[v['PumaID']] = v;
         var data = [];
-        for (var year = 2000; year <= 2022; year++) {
+        for (var year = 2000; year <= 2023; year++) {
           for (var quarter = 1; quarter < 5; quarter++) {
             if (v[ year + 'Q' + quarter ] != undefined)
               data.push(parseFloat(v[ year + 'Q' + quarter ]));
