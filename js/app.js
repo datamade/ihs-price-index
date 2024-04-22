@@ -130,12 +130,11 @@ function init_map() {
 
     map = L.map('map', { scrollWheelZoom: false }).setView([41.79998325207397, -87.87277221679688], 9);
 
-    L.mapbox.styleLayer('mapbox://styles/datamade/ckhdoudap025v19o2bfmiwcis', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-        accessToken: "pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA",
-        detectRetina: true
-    }).addTo(map);
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA', {
+        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>',
+        detectRetina: true,
+        sa_id: 'streets'
+      }).addTo(map);
 
     // control that shows state info on hover
     var info = L.control();
@@ -149,8 +148,8 @@ function init_map() {
     info.update = function (props) {
       var text = 'Hover over an area';
       if (props) {
-        if (puma_lookup[props.PUMACE10])
-          text = puma_lookup[props.PUMACE10].Name
+        if (puma_lookup[props.PUMACE20])
+          text = puma_lookup[props.PUMACE20].Name
         else
           text = "Chicago--Loop (not enough data)";
       }
@@ -171,22 +170,23 @@ function init_map() {
     }
 
     function resetHighlight(e) {
+      // console.log(e);
       var layer = e.target;
       puma_layer.resetStyle(layer);
-      if (layer.feature.properties.PUMACE10 == "03525")
+      if (layer.feature.properties.PUMACE20 == "03160")
         layer.setStyle({fillColor: '#ccc'});
       else
-        chart.series[chart_series[layer.feature.properties.PUMACE10]].setState();
+        chart.series[chart_series[layer.feature.properties.PUMACE20]].setState();
       info.update();
     }
 
     function highlightFeature(e) {
       var layer = e.target;
       var color = '#ccc';
-      if (chart.series[chart_series[layer.feature.properties.PUMACE10]] != undefined) {
-        color = chart.series[chart_series[layer.feature.properties.PUMACE10]].color;
-        chart.series[chart_series[layer.feature.properties.PUMACE10]].setState('hover');
-        chart.series[chart_series[layer.feature.properties.PUMACE10]].group.toFront();
+      if (chart.series[chart_series[layer.feature.properties.PUMACE20]] != undefined) {
+        color = chart.series[chart_series[layer.feature.properties.PUMACE20]].color;
+        chart.series[chart_series[layer.feature.properties.PUMACE20]].setState('hover');
+        chart.series[chart_series[layer.feature.properties.PUMACE20]].group.toFront();
       }
 
       layer.setStyle({
@@ -206,7 +206,9 @@ function init_map() {
 
     function onEachFeature(feature, layer) {
       layer.on({
-        mouseover: highlightFeature,
+        mouseover: highlightFeature
+      });
+      layer.on({
         mouseout: resetHighlight
       });
     }
@@ -219,9 +221,9 @@ function init_map() {
         }).addTo(map);
 
         puma_layer.eachLayer(function (layer) {
-          if (layer.feature.properties.PUMACE10 == "03525")
+          if (layer.feature.properties.PUMACE20 == "03160")
             layer.setStyle({fillColor: '#ccc'});
-          leaflet_features[layer.feature.properties.PUMACE10] = layer._leaflet_id;
+          leaflet_features[layer.feature.properties.PUMACE20] = layer._leaflet_id;
         });
 
         map.fitBounds(puma_layer.getBounds());
