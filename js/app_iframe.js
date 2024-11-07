@@ -25,7 +25,7 @@ function init_chart(){
       $.each(puma_data, function(k, v){
         puma_lookup[v['PumaID']] = v;
         var data = [];
-        for (var year = 2000; year <= 2023; year++) {
+        for (var year = 2000; year <= 2024; year++) {
           for (var quarter = 1; quarter < 5; quarter++) {
             if (v[ year + 'Q' + quarter ] != undefined)
               data.push(parseFloat(v[ year + 'Q' + quarter ]));
@@ -43,7 +43,7 @@ function init_chart(){
             renderTo: 'chart'
         },
         title: {
-            text: "Cook County House Price Index: Jan 2000 - Dec 2023",
+            text: "Cook County House Price Index: Jan 2000 - Jun 2024",
             x: -20 //center
         },
         credits: { enabled: false },
