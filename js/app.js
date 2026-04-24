@@ -237,11 +237,11 @@ function init_table() {
     var row = "\
       <tr>\
         <td style='width: 35%'>" + v.Name + "</td>\
-        " + table_row(v['Change Since 2000']) + "\
-        " + table_row(v['Change Peak to Current']) + "\
-        " + table_row(v['Change Bottom to Current']) + "\
-        " + table_row(v['COVID-19 Pandemic Start to Current']) + "\
-        " + table_row(v['Year-over-year change']) + "\
+        " + table_row(puma_lookup, v, 'Change Since 2000') + "\
+        " + table_row(puma_lookup, v, 'Change Peak to Current') + "\
+        " + table_row(puma_lookup, v, 'Change Bottom to Current') + "\
+        " + table_row(puma_lookup, v, 'COVID-19 Pandemic Start to Current') + "\
+        " + table_row(puma_lookup, v, 'Year-over-year change') + "\
         " + plain_row(v['Median Sales Price']) + "\
       </tr>";
 
@@ -266,10 +266,34 @@ function init_table() {
   });
 }
 
-function table_row(value) {
-  var style = 'danger';
+function getMax(obj, key) {
+  return Math.max(...Object.values(obj).map(v => v[key]));
+}
+
+function getMin(obj, key) {
+  return Math.min(...Object.values(obj).map(v => v[key]));
+}
+
+function table_row(obj, values, key) {
+
+  var value = values[key];
+  min = getMin(obj, key);
+  max = getMax(obj, key);
+
+  // calculate 2 evenly spaced cutoffs
+  var cutoff1 = Math.round(((max - min) / 3) + min)
+  var cutoff2 = Math.round(((max - min) * 2 / 3) + min)
+
+  // set color based on value
+  var style = 'green-light';
+  if (value >= cutoff1) {
+    style = 'green-med';
+  } 
+  if (value >= cutoff2) {
+    style = 'green-strong';
+  }
+
   if (value >= 0) {
-    style = 'success';
     value = "+" + value;
   }
   return "<td class='" + style + "'>" + value + "%</td>";

@@ -113,3 +113,15 @@ h2 {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+.green-strong {
+  background-color: #74AF69;
+}
+
+.green-med {
+  background-color: #AAD2A1;
+}
+
+.green-light {
+  background-color: #E5F1E4;
+}
