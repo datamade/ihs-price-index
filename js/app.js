@@ -292,6 +292,9 @@ function table_row(obj, values, key) {
   if (value >= cutoff2) {
     style = 'green-strong';
   }
+  if (value < 0) {
+    style = 'danger';
+  }
 
   if (value >= 0) {
     value = "+" + value;
