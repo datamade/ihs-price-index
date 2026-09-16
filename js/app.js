@@ -130,7 +130,7 @@ function init_map() {
 
     map = L.map('map', { scrollWheelZoom: false }).setView([41.79998325207397, -87.87277221679688], 9);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png') + '?key=cb1_3nq3_4_38d833ece7a6c133aa2d1d48', {
       attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 20,
